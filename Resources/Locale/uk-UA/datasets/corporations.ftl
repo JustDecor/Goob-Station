@@ -1,0 +1,9 @@
+traitor-corporations-dataset-1 = Промисловість CyberSun
+traitor-corporations-dataset-2 = Мародери Gorlex
+traitor-corporations-dataset-3 = МІ13
+traitor-corporations-dataset-4 = Кооператив Tiger
+traitor-corporations-dataset-5 = S.E.L.F
+traitor-corporations-dataset-6 = Консорціум з прав тварин
+traitor-corporations-dataset-7 = Корпорація Donk
+traitor-corporations-dataset-8 = Корпорація Waffle
+traitor-corporations-dataset-9 = Interdyne Pharmaceutics
