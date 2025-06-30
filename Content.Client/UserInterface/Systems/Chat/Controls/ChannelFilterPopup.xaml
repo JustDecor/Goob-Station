@@ -30,6 +30,12 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 </PanelContainer>
                 <Button Name="HighlightButton" Text="{Loc 'hud-chatbox-highlights-button'}" ToolTip="{Loc 'hud-chatbox-highlights-tooltip'}"/>
             </BoxContainer>
+            <!-- Pirate - start
+            <BoxContainer Orientation="Vertical">
+            <LineEdit Name="CustomWordsLineEdit"
+                    PlaceHolder="{Loc 'ui-options-pirate-ping-name-custom-words-placeholder'}"/>
+            </BoxContainer> -->
+            <!-- Pirate - end  -->
     <!-- Goobstation - end -->
         </BoxContainer>
     </PanelContainer>

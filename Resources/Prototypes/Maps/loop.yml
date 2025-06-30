@@ -92,16 +92,16 @@
 
 - type: gameMap
   id: Loop
-  mapName: 'Loop Station'
+  mapName: 'Петля'
   mapPath: /Maps/_Goobstation/loop.yml
-  minPlayers: 35
+  minPlayers: 20
   maxPlayers: 70
   stations:
     Loop:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: '{0} Loop Station {1}'
+          mapNameTemplate: '{0} Станція Петля {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

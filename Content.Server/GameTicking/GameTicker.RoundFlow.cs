@@ -88,6 +88,7 @@ using Content.Server.Roles;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
+using Content.Pirate.Common.Voting;
 using Content.Shared.Mind;
 using Content.Shared.Players;
 using Content.Shared.Preferences;
@@ -585,7 +586,7 @@ namespace Content.Server.GameTicking
         public void ShowRoundEndScoreboard(string text = "")
         {
             // Log end of round
-            _adminLogger.Add(LogType.EmergencyShuttle, LogImpact.High, $"Round ended, showing summary");
+            _adminLogger.Add(LogType.EmergencyShuttle, LogImpact.High, $"Раунд завершено, показ результатів");
 
             //Tell every client the round has ended.
             var gamemodeTitle = CurrentPreset != null ? Loc.GetString(CurrentPreset.ModeTitle) : string.Empty;
@@ -795,6 +796,7 @@ namespace Content.Server.GameTicking
             // Round restart cleanup event, so entity systems can reset.
             var ev = new RoundRestartCleanupEvent();
             RaiseLocalEvent(ev);
+            RaiseLocalEvent(new LobbyReadyUpEvent()); // Pirate
 
             // So clients' entity systems can clean up too...
             RaiseNetworkEvent(ev);
