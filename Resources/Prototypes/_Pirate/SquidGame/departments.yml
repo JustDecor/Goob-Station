@@ -1,0 +1,13 @@
+- type: department
+  id: SquidGame
+  name: "Департамент Гри"
+  description: "Департамент учасників та організаторів Squid Game. Гравці борються за виживання, охоронці пробують підтримувати порядок."
+  color: "#FF1744"
+  roles:
+  - SquidGamePlayer
+  - SquidGameGuardCircle
+  - SquidGameGuardTriangle
+  - SquidGameGuardSquare
+  - SquidGameGuardUwU
+  primary: false
+  weight: -200
