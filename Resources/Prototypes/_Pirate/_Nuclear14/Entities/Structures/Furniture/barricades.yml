@@ -144,8 +144,9 @@
   - type: Slippery
     slipSound:
       path: /Audio/Effects/fence_rattle1.ogg
-    launchForwardsMultiplier: 0
-    paralyzeTime: 0
+    slipData:
+      launchForwardsMultiplier: 0
+      paralyzeTime: 0
 
 - type: entity
   parent: N14BarricadeSandbagSingle

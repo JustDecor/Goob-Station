@@ -20,17 +20,17 @@
   maxCount: 10
 
 - type: stack
-  id: CopperOre
+  id: N14CopperOre
   name: copper ore
   icon: { sprite: "_Pirate/_Nuclear14/Objects/Misc/materials.rsi", state: copper }
-  spawn: CopperOre1
+  spawn: N14CopperOre1
   maxCount: 30
 
 - type: stack
-  id: SulfurOre
+  id: N14SulfurOre
   name: sulfur ore
   icon: { sprite: "_Pirate/_Nuclear14/Objects/Misc/materials.rsi", state: sulfur }
-  spawn: SulfurOre1
+  spawn: N14SulfurOre1
   maxCount: 10
 
 # Metals

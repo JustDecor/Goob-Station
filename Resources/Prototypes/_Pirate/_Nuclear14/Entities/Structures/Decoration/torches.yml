@@ -71,6 +71,6 @@
   - type: FireVisuals
     sprite: _Pirate/_Nuclear14/Structures/Decoration/torches.rsi
     normalState: wall_torch_lit
-  - type: Construction
-    graph: WallTorch
-    node: WallTorch
+  #- type: Construction
+  #  graph: WallTorch
+  #  node: WallTorch

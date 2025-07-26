@@ -9,7 +9,6 @@
   supervisors: job-supervisors-squidgame-guards
   canBeAntag: false
   joinNotifyCrew: false
-  OverrideConsoleVisibility: false
   access:
   - Maintenance
   requirements:
@@ -78,7 +77,6 @@
   supervisors: job-supervisors-squidgame-triangle
   canBeAntag: false
   joinNotifyCrew: false
-  OverrideConsoleVisibility: false
   access:
   - Security
   - Maintenance
@@ -120,7 +118,6 @@
   supervisors: job-supervisors-squidgame-square
   canBeAntag: false
   joinNotifyCrew: false
-  OverrideConsoleVisibility: false
   access:
   - Security
   - Maintenance
@@ -163,7 +160,6 @@
   canBeAntag: false
   requireAdminNotify: true
   joinNotifyCrew: false
-  OverrideConsoleVisibility: false
   access:
   - Security
   - Command
@@ -210,7 +206,6 @@
   weight: 20
   accessGroups:
   - AllAccess
-  OverrideConsoleVisibility: false
   requirements:
     - !type:SpeciesRequirement
       species:

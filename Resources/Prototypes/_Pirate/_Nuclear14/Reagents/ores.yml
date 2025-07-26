@@ -16,7 +16,7 @@
 
 - type: material
   id: RawSulfur
-  stackEntity: SulfurOre1
+  stackEntity: N14SulfurOre1
   name: materials-raw-sulfur
   unit: materials-unit-chunk
   icon: { sprite: _Pirate/_Nuclear14/Objects/Misc/materials.rsi, state: sulfur }
@@ -24,7 +24,7 @@
 
 - type: material
   id: RawCopper
-  stackEntity: CopperOre1
+  stackEntity: N14CopperOre1
   name: materials-raw-copper
   unit: materials-unit-chunk
   icon: { sprite: _Pirate/_Nuclear14/Objects/Misc/materials.rsi, state: copper }
