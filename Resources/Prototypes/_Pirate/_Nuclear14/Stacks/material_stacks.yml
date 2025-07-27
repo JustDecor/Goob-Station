@@ -1,34 +1,34 @@
 - type: stack
   id: Circuitry
-  name: circuitry
+  name: stack-name-circuitry
   icon: { sprite: _Pirate/_Nuclear14/Objects/Misc/materials.rsi, state: circuits_3 }
   spawn: N14MaterialCircuitry1
   maxCount: 15
 
 - type: stack
   id: N14AluminiumOre
-  name: bauxite
+  name: stack-name-n14-aluminium-ore
   icon: { sprite: "_Pirate/_Nuclear14/Objects/Misc/materials.rsi", state: lead }
   spawn: N14AluminiumOre1
   maxCount: 10
 
 - type: stack
   id: N14LeadOre
-  name: lead ore
+  name: stack-name-n14-lead-ore
   icon: { sprite: "_Pirate/_Nuclear14/Objects/Misc/materials.rsi", state: lead }
   spawn: N14LeadOre1
   maxCount: 10
 
 - type: stack
   id: N14CopperOre
-  name: copper ore
+  name: stack-name-n14-copper-ore
   icon: { sprite: "_Pirate/_Nuclear14/Objects/Misc/materials.rsi", state: copper }
   spawn: N14CopperOre1
   maxCount: 30
 
 - type: stack
   id: N14SulfurOre
-  name: sulfur ore
+  name: stack-name-n14-sulfur-ore
   icon: { sprite: "_Pirate/_Nuclear14/Objects/Misc/materials.rsi", state: sulfur }
   spawn: N14SulfurOre1
   maxCount: 10
@@ -36,21 +36,21 @@
 # Metals
 - type: stack
   id: Lead
-  name: lead
+  name: stack-name-lead
   icon: { sprite: "_Pirate/_Nuclear14/Objects/Misc/materials.rsi", state: ingot_lead }
   spawn: N14IngotLead1
   maxCount: 30
 
 - type: stack
   id: Aluminium
-  name: aluminium
+  name: stack-name-aluminium
   icon: { sprite: "_Pirate/_Nuclear14/Objects/Misc/materials.rsi", state: ingot_aluminum }
   spawn: N14IngotAluminium1
   maxCount: 30
 
 - type: stack
   id: Copper
-  name: copper
+  name: stack-name-copper
   icon: { sprite: "_Pirate/_Nuclear14/Objects/Misc/materials.rsi", state: ingot_copper }
   spawn: IngotCopper1
   maxCount: 30
