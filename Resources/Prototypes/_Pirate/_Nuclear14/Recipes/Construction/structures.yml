@@ -1,14 +1,14 @@
 - type: construction
-  name: log wall
+  name: structure-name-n14woodwalllog
   id: N14WoodWallLog
   graph: N14WoodWall
   startNode: start
   targetNode: logWall
   category: construction-category-structures
-  description: Home from home.
-  icon:
-    sprite: _Pirate/_Nuclear14/Structures/Walls/nc14/woodlog.rsi
-    state: full
+  description: structure-desc-n14woodwalllog
+  #icon:
+  #  sprite: _Pirate/_Nuclear14/Structures/Walls/nc14/woodlog.rsi
+  #  state: full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -19,19 +19,19 @@
 
 # # Doors
 - type: construction
-  name: wooden door
+  name: structure-name-n14doorwood
   id: N14DoorWood
   graph: N14DoorGraph
   startNode: start
   targetNode: woodDoorMakeshift
   category: construction-category-structures
-  description: A primitive door with manual operation like the cavemen used.
+  description: structure-desc-n14doorwood
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   hide: false
-  icon:
-    sprite: _Pirate/_Nuclear14/Structures/Doors/FalloutDoors/wooddoor.rsi
-    state: closed
+  #icon:
+  #  sprite: _Pirate/_Nuclear14/Structures/Doors/FalloutDoors/wooddoor.rsi
+  #  state: closed
   conditions:
     - !type:TileNotBlocked
