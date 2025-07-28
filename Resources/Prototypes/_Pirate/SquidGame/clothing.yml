@@ -132,6 +132,15 @@
     requiredSlot: innerclothing
     clothingPrototypes:
       head: ClothingHoodRed
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:Container {}
 
 - type: entity
   parent: ClothingHeadBase
