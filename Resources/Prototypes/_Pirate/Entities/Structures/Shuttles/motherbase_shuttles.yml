@@ -1,0 +1,63 @@
+- type: entity
+  parent: AirlockExternalGlassShuttleLocked
+  id: AirlockExternalGlassShuttleCargoFilled
+  suffix: Motherbase, Cargo-Filled, Locked
+  components:
+  - type: GridFill
+    path: /Maps/_Pirate/Shuttles/_Motherbase/Cargo_shuttle.yml
+
+- type: entity
+  parent: AirlockExternalGlassShuttleLocked
+  id: AirlockExternalGlassShuttleEngiFilled
+  suffix: Motherbase, Engi-Filled, Locked
+  components:
+  - type: GridFill
+    path: /Maps/_Pirate/Shuttles/_Motherbase/Engi_Shuttle.yml
+
+- type: entity
+  parent: AirlockExternalGlassShuttleLocked
+  id: AirlockExternalGlassShuttleMedFilled
+  suffix: Motherbase, Med-Filled, Locked
+  components:
+  - type: GridFill
+    path: /Maps/_Pirate/Shuttles/_Motherbase/Med_shuttle.yml
+
+- type: entity
+  parent: AirlockExternalGlassShuttleLocked
+  id: AirlockExternalGlassShuttleScienceFilled
+  suffix: Motherbase, Science-Filled, Locked
+  components:
+  - type: GridFill
+    path: /Maps/_Pirate/Shuttles/_Motherbase/Science_shuttle.yml
+
+- type: entity
+  parent: AirlockExternalGlassShuttleLocked
+  id: AirlockExternalGlassShuttleSciencePod1Filled
+  suffix: Motherbase, SciencePod1-Filled, Locked
+  components:
+  - type: GridFill
+    path: /Maps/_Pirate/Shuttles/_Motherbase/Science_shuttle_pod1.yml
+
+- type: entity
+  parent: AirlockExternalGlassShuttleLocked
+  id: AirlockExternalGlassShuttleSciencePod2Filled
+  suffix: Motherbase, SciencePod2-Filled, Locked
+  components:
+  - type: GridFill
+    path: /Maps/_Pirate/Shuttles/_Motherbase/Science_shuttle_pod2.yml
+
+- type: entity
+  parent: AirlockExternalGlassShuttleLocked
+  id: AirlockExternalGlassShuttleSecFilled
+  suffix: Motherbase, Sec-Filled, Locked
+  components:
+  - type: GridFill
+    path: /Maps/_Pirate/Shuttles/_Motherbase/Sec_Shuttle.yml
+
+- type: entity
+  parent: AirlockExternalGlassShuttleLocked
+  id: AirlockExternalGlassShuttleServiceFilled
+  suffix: Motherbase, Service-Filled, Locked
+  components:
+  - type: GridFill
+    path: /Maps/_Pirate/Shuttles/_Motherbase/Service_shuttle.yml
