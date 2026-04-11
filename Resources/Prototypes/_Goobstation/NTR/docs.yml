@@ -88,14 +88,16 @@
 
 # Documents
 - type: entity
-  name: Corporate Document
+  name: "Корпоративний документ"
   id: CorporateDocument
   abstract: true
   parent: Paper
-  description: An official NanoTrasen document. Looks like a ton of spam, as always.
+  description: "Офіційний документ NanoTrasen. Схоже на купу спаму, як завжди."
   components:
   - type: RandomDocument
     documentType: ServiceDocument # Default fallback
+  - type: FaxableObject
+    copyable: false # womp womp no free points
 
 # Regular Documents
 - type: entity

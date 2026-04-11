@@ -173,6 +173,10 @@
     - id: ClothingHandsKnuckleDustersQM # Goobstation - ROCK THAT MF!!
     - id: PrinterDocFlatpack  # Pirate document printer
     - id: SalvageJobBoardComputerCircuitboard # Goobstation - This doesn't really have a use right now but it's there incase it ever gets use again
+    - id: CargoMegaphone # goob - loudspeaker
+    - id: SlotMachineHighRollerFlatPack # Goob - gambling
+    - id: Eftpos #Pirate banking
+    - id: PhotoAlbumDepartmentSupply
 
 - type: entity
   id: LockerQuarterMasterFilled
@@ -192,7 +196,8 @@
     - id: CaptainIDCard
     - id: CigarGoldCase
       prob: 0.25
-    - id: ClothingBeltSheathFilled
+    #- id: ClothingBeltSheathFilled # Pirate sabres
+    - id: CaptainUndeterminedSabre # Pirate sabres
     - id: ClothingHeadsetAltCommand
     - id: ClothingOuterArmorCaptainCarapace
     - id: CommsComputerCircuitboard
@@ -211,6 +216,7 @@
       conditions:
       - !type:PlayerCountCondition
         max: 15
+    - id: PhotoAlbumDepartmentCommand
 
 # No laser table + Laser table
 - type: entityTable
@@ -298,7 +304,11 @@
     - id: WeaponDisabler
     - id: ClothingEyesHudCommand
     - id: ServiceTechFabCircuitboard # Goobstation - Service Techfab
+    - id: CommandMegaphone # goob - loudspeakers
     - id: PrinterDocFlatpack  # Pirate document printer
+    - id: Eftpos #Pirate banking
+    - id: WalletCartridge #Pirate banking
+    - id: PhotoAlbumDepartmentService
 
 - type: entity
   id: LockerHeadOfPersonnelFilled
@@ -332,6 +342,8 @@
     - id: RubberStampCE
     - id: MetalFoamGrenade
     # Goobstation V
+    - id: SupermatterComputerCircuitboard
+    - id: BaseHandheldStationMapSupermatterCe
     - id: BaseHandheldStationMapPowerCe
     - id: EngineeringTechFabCircuitboard
     - id: CartridgeRocketSingularityBuster
@@ -340,6 +352,7 @@
     - id: MachinePowerTransmissionLaserFlatpack
     - id: RCDRechargingCE
     - id: PrinterDocFlatpack  # Pirate document printer
+    - id: PhotoAlbumDepartmentEngineering
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -400,9 +413,7 @@
     - id: MedkitFilled
     - id: RubberStampCMO
     # Goobstation Start
-    - id: CloningpodFlatpack
-    - id: MedicalScannerFlatpack
-    - id: ComputerCloningConsoleFlatpack
+    - id: ChemistryHotplateFlatPack
     - id: BiomassReclaimerFlatpack
     - id: Multitool
     - id: MedTekCartridge
@@ -412,9 +423,13 @@
     - id: ClothingBackpackDuffelSurgeryFilled
     # Shitmed
     - id: MedicalBiofabricatorFlatpack
+    # Virology
+    - id: DiseaseDiagnoserFlatPack
+    - id: VaccinatorFlatPack
     # Goobstation End
     - id: PrinterDocFlatpack  # Pirate document printer
     - id: ClothingHandsGlovesCombatNitrile #Pirate
+    - id: PhotoAlbumDepartmentMedical
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -474,11 +489,13 @@
       prob: 0.15 # GoobStation - RD needs cigs for uhh... science...
     - id: ScienceTechFabCircuitboard # Goobstation - Science Techfab
     - id: ClothingBeltGeminiHoloProjector # Goobstation - Who better to do science with than yourself?
+    - id: XenobiologyBountyComputerCircuitboard # Goobstation
     - id: MMI # Goobstation
     - id: PrinterDocFlatpack  # Pirate document printer
     - id: ClothingEyesGlassesEpistemics
     - id: ClothingEyesHudEpistemics
       amount: 3
+    - id: PhotoAlbumDepartmentScience
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -533,7 +550,7 @@
     - id: ClothingOuterCoatHoSTrench
     - id: ClothingShoesBootsJack
     - id: DoorRemoteSecurity
-    - id: HoloprojectorSecurity
+    #- id: HoloprojectorSecurity Goob, you have one in the belt
     - id: RubberStampHos
     - id: SecurityTechFabCircuitboard
     #- id: WeaponDisabler # Goobstation (Disablers in belts)
@@ -542,6 +559,7 @@
     - id: DrinkHosFlask
     - id: ClothingBeltSheathHeadOfSecurityFilled # Goobstation - security revamp
     - id: PrinterDocFlatpack  # Pirate document printer
+    - id: PhotoAlbumDepartmentSecurity
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -594,4 +612,5 @@
     - id: SpaceCash1000
     - id: BeachBall
     - id: BikeHorn
-
+    - id: FoodMango #Goobstation
+      prob: 0.65

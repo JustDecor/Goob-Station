@@ -120,14 +120,19 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: TimedDespawn
-    lifetime: 0.4
+    lifetime: 0.2 # Pirate
   - type: Sprite
     drawdepth: BelowMobs
     layers:
     - shader: unshaded
       map: ["enum.EffectLayers.Unshaded"]
-      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
-      state: muzzle_bullet
+      sprite: _Pirate/Objects/Weapons/Guns/Projectiles/muzzleflashes.rsi # Pirate
+      state: kinetic # Pirate
+  - type: PointLight # Pirate
+    enabled: true
+    color: "#ffa223"
+    radius: 1.4
+    energy: 5.0
   - type: EffectVisuals
   - type: Tag
     tags:
@@ -145,8 +150,13 @@
     layers:
     - shader: unshaded
       map: ["enum.EffectLayers.Unshaded"]
-      sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
-      state: omnilaser_flash
+      sprite: _Pirate/Objects/Weapons/Guns/Projectiles/muzzleflashes.rsi # Pirate
+      state: energystun # Pirate
+  - type: PointLight # Pirate
+    enabled: true
+    color: "#0ab8c4"
+    radius: 1.4
+    energy: 5.0
 
 - type: entity
   parent: MuzzleFlashEffect
@@ -159,14 +169,19 @@
     layers:
     - shader: unshaded
       map: ["enum.EffectLayers.Unshaded"]
-      sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
-      state: heavylaser_flash
+      sprite: _Pirate/Objects/Weapons/Guns/Projectiles/muzzleflashes.rsi # Pirate
+      state: energy # Pirate
+  - type: PointLight # Pirate
+    enabled: true
+    color: "#d63b28"
+    radius: 1.4
+    energy: 5.0
 
 # One bullet to bring them all into the darkness and bind them
 - type: entity
   id: BaseBullet
-  name: BaseBullet
-  description: If you can see this you're probably dead!
+  name: "BaseBullet"
+  description: "Якщо ви бачите це, ви, мабуть, мертві!"
   abstract: true
   components:
   - type: Reflective
@@ -180,6 +195,7 @@
       shader: unshaded
   - type: Physics
     bodyType: Dynamic
+    bodyStatus: InAir
     linearDamping: 0
     angularDamping: 0
   - type: Fixtures
@@ -218,6 +234,7 @@
   components:
   - type: TriggerOnCollide
     fixtureID: projectile
+    maxTriggers: 1
   - type: Projectile
     damage:
       types:
@@ -236,7 +253,7 @@
 
 - type: entity
   id: BaseBulletPractice
-  name: base bullet practice
+  name: "практика з базовими кулями"
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
@@ -251,7 +268,7 @@
 
 - type: entity
   id: BaseBulletIncendiary
-  name: base bullet incendiary
+  name: "базова куля запальна"
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
@@ -269,7 +286,7 @@
 
 - type: entity
   id: BaseBulletAP
-  name: base bullet armor-piercing
+  name: "базова куля бронебійний"
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
@@ -285,7 +302,7 @@
 
 - type: entity
   id: BaseBulletUranium
-  name: base bullet uranium
+  name: "базовий уран для куль"
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
@@ -300,7 +317,7 @@
 
 # Energy projectiles
 - type: entity
-  name: taser bolt
+  name: "тазерний заряд"
   id: BulletTaser
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
@@ -311,11 +328,9 @@
       params:
         volume: 5
   - type: Sprite
-    noRot: true
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-    color: "#ffff33"
+    sprite: _Pirate/Objects/Weapons/Guns/Projectiles/energybolts.rsi # Pirate
     layers:
-    - state: spark
+    - state: lightgold # Pirate
       shader: unshaded
   - type: Physics
   - type: Fixtures
@@ -330,16 +345,50 @@
         - BulletImpassable
       fly-by: *flybyfixture
   - type: Ammo
+    muzzleFlash: MuzzleFlashEffectGoldLaser # Pirate
   - type: Projectile
     damage:
       types:
-        Heat: 5
+        Shock: 1
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/taser_hit.ogg"
     forceSound: true
+  - type: TimedDespawn
+    lifetime: 0.170 # Very short range
+  - type: StunOnCollide
+    stunAmount: 0
+    knockdownAmount: 2.5 # Enough to subdue and follow up with a stun batong
+    slowdownAmount: 2.5
+    walkSpeedModifier: 0.5
+    sprintSpeedModifier: 0.5
+
+- type: entity
+  parent: BulletTaser
+  id: BulletTaserSuper
+  categories: [ HideSpawnMenu ]
+  name: "тазерний заряд"
+  description: "Якщо ви це бачите, вас, мабуть, щойно застанметили"
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: Structures/Power/Generation/Tesla/energy_miniball.rsi
+    color: "#ffff33"
+    layers:
+    - state: tesla_projectile
+      shader: unshaded
+  - type: PointLight
+    enabled: true
+    color: "#ffff33"
+    radius: 2.0
+    energy: 7.01
+  - type: TimedDespawn
+    lifetime: 1.0 # Not so short range
   - type: StunOnCollide
     stunAmount: 5
-    knockdownAmount: 5
+    knockdownAmount: 10
+    slowdownAmount: 10
+    walkSpeedModifier: 0.5
+    sprintSpeedModifier: 0.5
 
 - type: entity
   name : disabler bolt
@@ -356,9 +405,9 @@
       params:
         volume: 5
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    sprite: _Pirate/Objects/Weapons/Guns/Projectiles/energybolts.rsi # Pirate
     layers:
-    - state: omnilaser
+    - state: mediumstun
       shader: unshaded
   - type: Physics
   - type: Fixtures
@@ -372,8 +421,9 @@
         - Opaque # Goobstation
       fly-by: *flybyfixture
   - type: Ammo
+    muzzleFlash: MuzzleFlashEffectOmnilaser # Pirate
   - type: StaminaDamageOnCollide
-    damage: 33
+    damage: 20 # Goob edit
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:
@@ -395,9 +445,9 @@
       params:
         volume: 5
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    sprite: _Pirate/Objects/Weapons/Guns/Projectiles/energybolts.rsi # Pirate
     layers:
-    - state: omnilaser
+    - state: mediumstun # Pirate
       shader: unshaded
   - type: Physics
   - type: Fixtures
@@ -411,6 +461,7 @@
         - Opaque # Goobstation
       fly-by: *flybyfixture
   - type: Ammo
+    muzzleFlash: MuzzleFlashEffectOmnilaser # Pirate
   - type: StaminaDamageOnCollide
     damage: 1
   - type: Projectile
@@ -423,18 +474,18 @@
     forceSound: true
 
 - type: entity
-  name: emitter bolt
+  name: "болт випромінювача"
   id: EmitterBolt
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: Structures/Power/Generation/Singularity/emitter.rsi
+    sprite: _Pirate/Objects/Weapons/Guns/Projectiles/energybolts.rsi # Pirate
     layers:
-    - state: projectile
+    - state: mediumsynd # Pirate
       shader: unshaded
   - type: Ammo
-    muzzleFlash: null
+    muzzleFlash: MuzzleFlashEffectSyndLaser # Pirate
   - type: Physics
   - type: Fixtures
     fixtures:
@@ -461,9 +512,10 @@
     - EmitterBolt
   - type: TimedDespawn
     lifetime: 3
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
-  name: watcher bolt
+  name: "сторожовий болт"
   id: WatcherBolt
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
@@ -474,9 +526,9 @@
       params:
         volume: 5
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    sprite: _Pirate/Objects/Weapons/Guns/Projectiles/energybolts.rsi # Pirate
     layers:
-    - state: omnilaser
+    - state: lightstun # Pirate
       shader: unshaded
   - type: Ammo
     muzzleFlash: null
@@ -503,7 +555,7 @@
     heat: -15000 # Lavaland Change
 
 - type: entity
-  name: magmawing watcher bolt
+  name: "магнітний болт зі сторожовим замком"
   id: WatcherBoltMagmawing
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
@@ -526,7 +578,7 @@
     heat: 20000 # Lavaland Change
 
 - type: entity
-  name: icewing watcher bolt
+  name: "болт спостерігача крижаного крила"
   id: WatcherBoltIcewing
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
@@ -551,7 +603,7 @@
 - type: entity
   parent: BaseBullet
   id: BasiliskRay
-  name: basilisk ray
+  name: "промінь василіска"
   categories: [ HideSpawnMenu ]
   components:
   - type: FlyBySound
@@ -587,65 +639,116 @@
   - type: ChangeTemperatureOnCollide
     heat: -50000
 
-- type: entity
-  id: BulletKinetic
-  name: kinetic bolt
-  parent: BaseBullet
-  categories: [ HideSpawnMenu ]
-  description: Not too bad, but you still don't want to get hit by it.
-  components:
-  - type: Reflective
-    reflective:
-    - NonEnergy
-  - type: Sprite
-    noRot: false
-    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
-    layers:
-    - state: chronobolt
-      shader: unshaded
-  - type: Projectile
-    impactEffect: BulletImpactEffectKinetic
-    damage:
-      types:
-        Blunt: 40 # Lavaland Change - TOTAL PKA VICTORY
-  #        Structural: 30 Lavaland Change - No easy break-ins :)
-  # Short lifespan
-  - type: TimedDespawn
-    lifetime: 0.22 # roughly 5.5 tiles
-  - type: GatheringProjectile
+# Lavaland Change start - migrated to _Lavaland folder
+#- type: entity
+#  id: BulletKinetic
+#  name: kinetic bolt
+#  parent: BaseBullet
+#  categories: [ HideSpawnMenu ]
+#  description: Not too bad, but you still don't want to get hit by it.
+#  components:
+#  - type: Reflective
+#    reflective:
+#    - NonEnergy
+#  - type: Sprite
+#    noRot: false
+#    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+#    layers:
+#    - state: chronobolt
+#      shader: unshaded
+#  - type: Projectile
+#    impactEffect: BulletImpactEffectKinetic
+#    damage:
+#      types:
+#        Blunt: 15
+#        Structural: 30
+#  # Short lifespan
+#  - type: TimedDespawn
+#    lifetime: 0.22 # roughly 5.5 tiles
+#  - type: GatheringProjectile
 
+#- type: entity
+#  id: BulletKineticShuttle
+#  parent: BaseBullet
+#  categories: [ HideSpawnMenu ]
+#  components:
+#  - type: Sprite
+#    noRot: false
+#    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+#    layers:
+#    - state: chronobolt
+#      shader: unshaded
+#  - type: Projectile
+#    impactEffect: BulletImpactEffectKinetic
+#    damage:
+#      types:
+#        Blunt: 30
+#        Structural: 35
+#  - type: Ammo
+#    muzzleFlash: HitscanEffect
+#  - type: TimedDespawn
+#    lifetime: 1.5
+#  - type: PointLight
+#    radius: 2.5
+#    color: white
+#    energy: 0.5
+#  - type: GatheringProjectile
+
+#- type: entity
+#  id: BulletCharge
+#  name: charge bolt
+#  parent: BaseBullet
+#  categories: [ HideSpawnMenu ]
+#  description: Marks a target for additional damage.
+#  components:
+#  - type: Reflective
+#    reflective:
+#    - NonEnergy
+#  - type: Sprite
+#    noRot: false
+#    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+#    layers:
+#    - state: chronobolt
+#      shader: unshaded
+#  - type: GatheringProjectile
+#  - type: DamageMarkerOnCollide
+#    whitelist:
+#      components:
+#      - MobState
+#    damage:
+#      types:
+#        Blunt: 18
+#        Slash: 4
+#  - type: Projectile
+#    impactEffect: BulletImpactEffectKinetic
+#    damage:
+#      types:
+#        Blunt: 0
+  # Short lifespan
+#  - type: TimedDespawn
+#    lifetime: 0.4
+# Lavaland Change end
+
+# Deals less damage, glaive has better HP recovery
 - type: entity
-  id: BulletKineticShuttle
-  parent: BaseBullet
-  categories: [ HideSpawnMenu ]
+  id: BulletChargeGlaive
+  name: "снаряд-п'явка"
+  parent: BulletCharge
   components:
-  - type: Sprite
-    noRot: false
-    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
-    layers:
-    - state: chronobolt
-      shader: unshaded
-  - type: Projectile
-    impactEffect: BulletImpactEffectKinetic
+  - type: DamageMarkerOnCollide
+    whitelist:
+      components:
+      - MobState
     damage:
       types:
-        Blunt: 80 # Goobstation edit
-        # Structural: 35 # Goobstation edit
-  - type: Ammo
-    muzzleFlash: HitscanEffect
-  - type: TimedDespawn
-    lifetime: 0.3 # Goobstation edit
-  - type: PointLight
-    radius: 2.5
-    color: white
-    energy: 0.5
-  - type: GatheringProjectile
+        Blunt: 1
+        Slash: 5
 
 - type: entity
   parent: BulletRocket
   id: BulletSingularityBusterRocket
   categories: [ HideSpawnMenu ]
-  name: singularity buster rocket
+  name: "ракета \"Руйнівник Сингулярності"
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
@@ -659,65 +762,12 @@
     intensitySlope: 3
     totalIntensity: 150
     maxTileBreak: 1
-
-- type: entity
-  id: BulletCharge
-  name: charge bolt
-  parent: BaseBullet
-  categories: [ HideSpawnMenu ]
-  description: Marks a target for additional damage.
-  components:
-  - type: Reflective
-    reflective:
-    - NonEnergy
-  - type: Sprite
-    noRot: false
-    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
-    layers:
-    - state: chronobolt
-      shader: unshaded
-  - type: GatheringProjectile
-  - type: DamageMarkerOnCollide
-    onlyWorkOnFauna: true # Lavaland Change
-    whitelist:
-      components:
-      - MobState
-    damage:
-      types:
-    # Lavaland Change start
-        Blunt: 20 # 18 -> 20
-        Slash: 5 # 4 -> 5
-    effect: { sprite: /Textures/Objects/Weapons/effects.rsi, state: shield2 }
-    sound: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
-    # Lavaland change end
-  - type: Projectile
-    impactEffect: BulletImpactEffectKinetic
-    damage:
-      types:
-        Blunt: 0
-  # Short lifespan
-  - type: TimedDespawn
-    lifetime: 0.4
-
-  # Deals less damage, glaive has better HP recovery
-- type: entity
-  id: BulletChargeGlaive
-  name: leech bolt
-  parent: BulletCharge
-  components:
-  - type: DamageMarkerOnCollide
-    whitelist:
-      components:
-        - MobState
-    damage:
-      types:
-        Blunt: 1
-        Slash: 5
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   parent: BaseBullet
   id: AnomalousParticleDelta
-  name: delta particles
+  name: "дельта-частинки"
   categories: [ HideSpawnMenu ]
   components:
   - type: PointLight
@@ -754,7 +804,7 @@
   - type: Reflective
     reflective:
     - Energy
-
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   parent: AnomalousParticleDelta
@@ -767,11 +817,12 @@
     stabilityPerDestabilizingHit: 0.08
     healthPerWeakeningeHit: -0.1
     stabilityPerWeakeningeHit: -0.2
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   parent: AnomalousParticleDelta
   id: AnomalousParticleEpsilon
-  name: epsilon particles
+  name: "епсилон-частинки"
   categories: [ HideSpawnMenu ]
   components:
   - type: PointLight
@@ -785,6 +836,7 @@
       shader: unshaded
   - type: AnomalousParticle
     particleType: Epsilon
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   parent: AnomalousParticleEpsilon
@@ -797,11 +849,12 @@
     stabilityPerDestabilizingHit: 0.08
     healthPerWeakeningeHit: -0.1
     stabilityPerWeakeningeHit: -0.2
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   parent: AnomalousParticleDelta
   id: AnomalousParticleZeta
-  name: zeta particles
+  name: "зета-частинки"
   categories: [ HideSpawnMenu ]
   components:
   - type: PointLight
@@ -815,6 +868,7 @@
       shader: unshaded
   - type: AnomalousParticle
     particleType: Zeta
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   parent: AnomalousParticleZeta
@@ -827,11 +881,12 @@
     stabilityPerDestabilizingHit: 0.08
     healthPerWeakeningeHit: -0.1
     stabilityPerWeakeningeHit: -0.2
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   parent: AnomalousParticleDelta
   id: AnomalousParticleOmegaStrong
-  name: omega particles
+  name: "омега-частинки"
   categories: [ HideSpawnMenu ]
   components:
   - type: PointLight
@@ -856,11 +911,12 @@
     damage:
       types:
         Heat: 20
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   parent: AnomalousParticleDelta
   id: AnomalousParticleSigma
-  name: sigma particles
+  name: "сигма-частинки"
   categories: [ HideSpawnMenu ]
   components:
   - type: PointLight
@@ -874,20 +930,22 @@
       shader: unshaded
   - type: AnomalousParticle
     particleType: Sigma
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   parent: AnomalousParticleSigma
   id: AnomalousParticleSigmaStrong
-  name: sigma particles
+  name: "сигма-частинки"
   categories: [ HideSpawnMenu ]
   components:
   - type: AnomalousParticle
     particleType: Sigma
+  - type: SmartLinkBlacklist  # Goobstation
 
 # Launcher projectiles (grenade / rocket)
 - type: entity
   id: BulletRocket
-  name: rocket
+  name: "ракета"
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
   components:
@@ -906,10 +964,11 @@
     radius: 3.5
     color: orange
     energy: 0.5
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   id: BulletWeakRocket
-  name: weak rocket
+  name: "слабка ракета"
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
   components:
@@ -928,10 +987,11 @@
     radius: 3.5
     color: orange
     energy: 0.5
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   id: BulletGrenadeBaton
-  name: baton grenade
+  name: "світлошумова граната"
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
@@ -949,10 +1009,11 @@
   - type: StaminaDamageOnCollide
     damage: 80
     overtime: 50 # Goobstation
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   id: BulletGrenadeBlast
-  name: blast grenade
+  name: "бойова граната"
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
   components:
@@ -966,10 +1027,12 @@
     totalIntensity: 150 # a ~2 tile radius
     intensitySlope: 5
     maxIntensity: 10
+    canCreateVacuum: false
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   id: BulletGrenadeFlash
-  name: flash grenade
+  name: "світлошумова граната"
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
   components:
@@ -981,16 +1044,14 @@
     range: 7
   - type: SpawnOnTrigger
     proto: GrenadeFlashEffect
-  - type: ActiveTimerTrigger
-    timeRemaining: 0.3
   - type: DeleteOnTrigger
   - type: Flashbang # Goobstation
     minProtectionRange: 7 # Can't stun/knockdown people wearing any ear protection
+  - type: SmartLinkBlacklist  # Goobstation
 
-# This is supposed to spawn shrapnel and stuff so uhh... TODO?
 - type: entity
   id: BulletGrenadeFrag
-  name: frag grenade
+  name: "осколкова граната"
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
   components:
@@ -1001,22 +1062,28 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    totalIntensity: 175 # about a ~6 tile radius
+    totalIntensity: 50
     intensitySlope: 1
-    maxIntensity: 10
+    maxIntensity: 5
+    canCreateVacuum: false
+  - type: ContainerContainer
+    containers:
+      cluster-payload: !type:Container
+  - type: ProjectileGrenade
+    fillPrototype: PelletClusterLessLethal
+    capacity: 30
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   parent: BaseBulletTrigger
   id: BulletGrenadeCleanade
-  name: cleanade grenade round
+  name: "граната \"чистонада"
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
     - state: cleanade
-  - type: ActiveTimerTrigger
-    timeRemaining: 0.3
   - type: SmokeOnTrigger
     duration: 3.5
     spreadAmount: 30
@@ -1025,7 +1092,7 @@
       reagents:
       - ReagentId: SpaceCleaner
         Quantity: 30
-  - type: SoundOnTrigger
+  - type: EmitSoundOnTrigger
     sound: /Audio/Items/smoke_grenade_smoke.ogg
   - type: ExplodeOnTrigger
   - type: Explosive
@@ -1034,10 +1101,11 @@
     intensitySlope: 1
     maxIntensity: 0.01
     tileBreakScale: 0.01
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   id: BulletGrenadeEMP
-  name: EMP rocket
+  name: "ЕМІ-ракета"
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
   components:
@@ -1055,10 +1123,11 @@
     radius: 3.5
     color: blue
     energy: 0.5
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   id: BulletCap
-  name: cap bullet
+  name: "капсюльна куля"
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
@@ -1071,10 +1140,11 @@
     damage:
       types:
         Piercing: 0
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   id: BulletAcid
-  name: acid spit
+  name: "кислотна слина"
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
@@ -1088,10 +1158,11 @@
     - state: xeno_toxic
   - type: Ammo
     muzzleFlash: null
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   id: BulletWaterShot
-  name: water
+  name: "вода"
   categories: [ HideSpawnMenu ]
   components:
   - type: Clickable
@@ -1131,10 +1202,11 @@
     transferAmountPercentage: 1
   - type: Appearance
   - type: VaporVisuals
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   id: BulletHivebot
-  name: hivebot bullet
+  name: "куля хайвбота"
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
@@ -1145,7 +1217,7 @@
 
 - type: entity
   id: BulletCannonBall
-  name: cannonball
+  name: "гарматне ядро"
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
   components:
@@ -1164,10 +1236,11 @@
     radius: 1
     color: orange
     energy: 0.5
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   id: GrapplingHook
-  name: grappling hook
+  name: "гак для захоплення"
   categories: [ HideSpawnMenu ]
   components:
   - type: EmbeddableProjectile
@@ -1199,6 +1272,7 @@
         - Impassable
         - HighImpassable
   - type: GrapplingProjectile
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
   name : disabler bolt smg
@@ -1231,8 +1305,9 @@
         - Opaque # Goobstation
       fly-by: *flybyfixture
   - type: Ammo
+    muzzleFlash: MuzzleFlashEffectOmnilaser # Pirate
   - type: StaminaDamageOnCollide
-    damage: 15
+    damage: 12 # Goob edit
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:
@@ -1257,9 +1332,9 @@
       params:
         volume: 5
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    sprite: _Pirate/Objects/Weapons/Guns/Projectiles/energybolts.rsi # Pirate
     layers:
-    - state: heavylaser
+    - state: medium # Pirate
       shader: unshaded
   - type: Physics
   - type: Fixtures
@@ -1283,15 +1358,15 @@
   - type: Ammo
     muzzleFlash: MuzzleFlashEffectHeavyLaser
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    sprite: _Pirate/Objects/Weapons/Guns/Projectiles/energybolts.rsi # Pirate
     layers:
-    - state: heavylaser
+    - state: medium # Pirate
       shader: unshaded
   - type: Projectile
     impactEffect: BulletImpactEffectOrangeDisabler
     damage:
       types:
-        Heat: 28
+        Heat: 20 #goob, 28 > 20
 
 - type: entity
   name : disabler bolt
@@ -1302,9 +1377,9 @@
   - type: Ammo
     muzzleFlash: MuzzleFlashEffectOmnilaser
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    sprite: _Pirate/Objects/Weapons/Guns/Projectiles/energybolts.rsi # Pirate
     layers:
-    - state: omnilaser
+    - state: mediumstun # Pirate
       shader: unshaded
   - type: StaminaDamageOnCollide
     damage: 30
@@ -1318,7 +1393,7 @@
     forceSound: true
 
 - type: entity
-  name: tesla gun lightning
+  name: "блискавка з гармати Тесли"
   id: TeslaGunBullet
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
@@ -1351,9 +1426,10 @@
     - HideContextMenu
   - type: Ammo # Goobstation
     muzzleFlash: null
+  - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
-  name: laser bolt
+  name: "лазерний болт"
   id: BulletLaser
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
@@ -1367,9 +1443,9 @@
       params:
         volume: 5
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    sprite: _Pirate/Objects/Weapons/Guns/Projectiles/energybolts.rsi # Pirate
     layers:
-    - state: heavylaser
+    - state: light # Pirate
       shader: unshaded
   - type: Physics
   - type: Fixtures
@@ -1390,7 +1466,7 @@
         Heat: 13
 
 - type: entity
-  name: wide laser barrage
+  name: "широкий лазерний залп"
   id: BulletLaserSpread
   categories: [ HideSpawnMenu ]
   parent: BulletLaser
@@ -1399,9 +1475,11 @@
     proto: BulletLaser
     count: 5 #65 heat damage if you hit all your shots, but wide spread
     spread: 30
+  - type: Ammo # Pirate
+    muzzleFlash: MuzzleFlashEffectHeavyLaser # Pirate
 
 - type: entity
-  name: narrow laser barrage
+  name: "вузький лазерний промінь"
   id: BulletLaserSpreadNarrow
   categories: [ HideSpawnMenu ]
   parent: BulletLaser
@@ -1410,9 +1488,11 @@
     proto: BulletLaser
     count: 4 #52 heat damage if you hit all your shots, but narrower spread
     spread: 10
+  - type: Ammo # Pirate
+    muzzleFlash: MuzzleFlashEffectHeavyLaser # Pirate
 
 - type: entity
-  name: disabling laser barrage
+  name: "знерухомлюючий лазерний залп"
   id: BulletDisablerSmgSpread
   categories: [ HideSpawnMenu ]
   parent: BulletDisablerSmg

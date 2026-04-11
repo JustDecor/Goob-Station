@@ -1,0 +1,10 @@
+# Weather Blocker
+- type: entity
+  name: "Маркер блокування погоди"
+  id: MarkerWeatherblocker
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    sprite: _Pirate/Markers/environment.rsi
+    state: weather
+  - type: BlockWeather

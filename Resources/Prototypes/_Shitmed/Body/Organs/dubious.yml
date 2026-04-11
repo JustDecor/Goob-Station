@@ -13,10 +13,10 @@
 - type: entity
   id: OrganDubiousBase
   parent: [ OrganHumanHeart, BaseMajorContraband ]
-  name: mysterious gland
+  name: "таємнича залоза"
   categories: [ HideSpawnMenu ]
   abstract: true
-  description: Suspicious alien gland, replaces the heart.
+  description: "Підозріла чужорідна залоза, що замінює серце."
   components:
   - type: Sprite
     sprite: _Shitmed/Mobs/Species/Misc/Dubious/organs.rsi
@@ -328,3 +328,23 @@
       allowInventory: false
     onRemove: # Pirate
     - type: VentCrawler
+
+
+- type: entity
+  id: OrganDubiousRepairable
+  parent: OrganDubiousBase
+  components:
+  - type: Sprite
+    state: species
+  - type: Organ
+    onAdd:
+    - type: Repairable
+      fuelCost: 5
+      doAfterDelay: 3
+      damage:
+        types:
+          Blunt: -10
+          Piercing: -10
+          Slash: -10
+    onRemove: # Pirate
+    - type: Repairable

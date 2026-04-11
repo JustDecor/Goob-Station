@@ -25,7 +25,7 @@ selectable-set-thief-syndie-description =
     Trinkets from a disavowed past, or stolen from a careless agent?
     You've made some connections. Whiskey, echo...
     Includes: An Emag, Access Breaker, Interdyne cigs, a Syndicate codeword,
-    a Radio Jammer, a lighter and some strange red crystals.
+    a Radio Jammer, a novelty lighter box and some strange red crystals.
 
 selectable-set-thief-sleeper-name = Sleeper Kit
 selectable-set-thief-sleeper-description =
@@ -75,7 +75,7 @@ selectable-set-syndicate-hacker-name = Hacker Bundle
 selectable-set-syndicate-hacker-description =
     A bundle with everything you need to hack into and disrupt the Station itself,
     the station AI, its cyborgs and the Security team. HACK THE PLANET!
-    Contains: Antimov law board, authentication disruptor, EMAG,
+    Contains: A custom law board, authentication disruptor, EMAG,
     radio jammer, filled toolbox, experimental syndicate teleporter,
     cool glasses, binary decoder implanter and a syndicate encryption key.
 
@@ -109,6 +109,14 @@ selectable-set-syndicate-carp-description =
     Contains: a scroll of the Way of The Sleeping Carp, 10 dehydrated carp
     (half of which are holo), a carp hardsuit and a syndicate encryption key.
 
+selectable-set-syndicate-western-name = Western Bundle
+selectable-set-syndicate-western-description =
+    Light the western holo-cigar, tip the hat, and let the music play.
+    Contains: western holo-cigar, syndicate encryption key,
+    resonant jumpsuit, sunglasses, classic poncho,
+    cowboy hat and boots, two Python revolvers, six AP speedloaders,
+    and two advanced combat medipens.
+
 selectable-set-syndicate-sus-name = Suspicion Bundle
 selectable-set-syndicate-sus-description =
     When the traitor is sus. The traitor is you, of course.
@@ -139,6 +147,13 @@ selectable-set-blueshield-dragon-description =
     Sometimes you need to get your hands dirty.
     Includes: A book capable of teaching the user
     advanced kung fu martial art.
+
+#region Pirate: katana
+selectable-set-blueshield-kendo-name = kendo set
+selectable-set-blueshield-kendo-description =
+    A swordsman's set focused on patience and defense. The blade can block and deflect attacks, then answer with stronger strikes as its power grows.
+    Includes: a sheath and uchigatana.
+#endregion Pirate: katana
 
 selectable-set-blueshield-chester-name = chester set
 selectable-set-blueshield-chester-description =

@@ -1,0 +1,8 @@
+- type: entity
+  id: CartridgeCaselessRifleStandard
+  name: "набій (9.5мм)"
+  parent: BaseCartridgeCaselessRifle
+  description: "Малокаліберний набій, що використовує безгільзову технологію, відмовляючись від традиційної латунної гільзи на користь затверділого метального заряду. Стандартні кінетичні боєприпаси є поширеними та корисними в більшості ситуацій."
+  components:
+  - type: CartridgeAmmo
+    proto: BulletCaselessRifleStandard

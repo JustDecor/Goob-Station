@@ -7,14 +7,16 @@
   - MagazineUniversalMagnumRubber
   - MagazineMagnumEmpty
   - MagazineMagnum
+  # 9.5mm
   - MagazineCaselessRifleEmpty
-  - MagazineCaselessRifle
-
+  - MagazineCaselessRifleStandard
+  - MagazineBoxCaselessRifleStandard
 
 ## Dynamic
 - type: latheRecipePack
   id: SecurityAmmoPirate
   recipes:
+  # 45. Mk 32
   - MagazineUniversalMagnumUranium
   - MagazineUniversalMagnumIncendiary
   - MagazineMagnumUranium

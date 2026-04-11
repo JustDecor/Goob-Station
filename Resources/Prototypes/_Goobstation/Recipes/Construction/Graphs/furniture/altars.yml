@@ -9,7 +9,6 @@
 
 - type: constructionGraph
   id: AltarsGraph
-  start: start
   graph:
   - node: start
     edges:
@@ -83,6 +82,14 @@
       - tag: MakeshiftShield
         name: construction-graph-tag-blue
         doAfter: 3
+    - to: OrangeAltarNode # Pirate: katana
+      completed: # Pirate: katana
+      - !type:SnapToGrid # Pirate: katana
+        southRotation: true # Pirate: katana
+      steps: # Pirate: katana
+      - material: Gold # Pirate: katana
+        amount: 1 # Pirate: katana
+        doAfter: 3 # Pirate: katana
     - to: HeavenAltarNode
       completed:
       - !type:SnapToGrid
@@ -131,6 +138,31 @@
       - tag: Toolbox
         name: construction-graph-tag-toolbox
         doAfter: 3
+    - to: ClockAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - tag: PowerCellSmall
+        name: construction-graph-tag-power-cell-small
+        doAfter: 3
+    - to: DragonAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - tag: PlushieCarp
+        name: construction-graph-tag-plushie-carp
+        doAfter: 3
+    - to: EmpireAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - tag: Book
+        name: construction-graph-tag-book
+        doAfter: 3
+
   #Nullrod Altars
   - node: BananiumAltarNode
     entity: AltarBananium
@@ -174,7 +206,7 @@
     - to: AltarConvertNode
       completed:
       - !type:SpawnPrototype
-        prototype: FoodMeatFish
+        prototype: FoodMeatBacon
         amount: 1
       steps:
       - tool: Prying
@@ -191,6 +223,18 @@
       steps:
       - tool: Prying
         doAfter: 1
+
+  - node: OrangeAltarNode # Pirate: katana
+    entity: AltarConvertOrange # Pirate: katana
+    edges: # Pirate: katana
+    - to: AltarConvertNode # Pirate: katana
+      completed: # Pirate: katana
+      - !type:SpawnPrototype # Pirate: katana
+        prototype: IngotGold1 # Pirate: katana
+        amount: 1 # Pirate: katana
+      steps: # Pirate: katana
+      - tool: Prying # Pirate: katana
+        doAfter: 1 # Pirate: katana
 
   - node: HeavenAltarNode
     entity: AltarHeaven
@@ -259,6 +303,42 @@
       completed:
       - !type:SpawnPrototype
         prototype: ToolboxEmergency
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: ClockAltarNode
+    entity: AltarClock
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: PowerCellSmallPrinted
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: DragonAltarNode
+    entity: AltarDragon
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: PlushieCarp
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: EmpireAltarNode
+    entity: AltarEmpire
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: BookRandom
         amount: 1
       steps:
       - tool: Prying

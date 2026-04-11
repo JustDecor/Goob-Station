@@ -94,8 +94,8 @@
 - type: entity
   id: Airlock
   parent: BaseStructure
-  name: airlock
-  description: It opens, it closes, and maybe crushes you.
+  name: "повітряний шлюз"
+  description: "Він відкривається, закривається і, можливо, розчавить вас."
   components:
   - type: StationAiWhitelist
   - type: MeleeSound
@@ -105,7 +105,7 @@
           "/Audio/Weapons/smash.ogg"
   - type: InteractionOutline
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/basic.rsi
+    sprite: _Pirate/Structures/Doors/Airlocks/Standard/basic.rsi # Pirate changes
     snapCardinals: true
     layers:
     - state: closed
@@ -268,12 +268,15 @@
     - Airlocks
     - WirePanels
     - Networking
-  - type: InteractionVerbs # Pirate
-    allowedVerbs:
-    - KnockOn
   - type: Penetratable # Goobstation - Better snipers
     penetrateDamage: 75
     damagePenalty: 0.2
+  - type: InteractionVerbs
+    allowedVerbs:
+    - KnockOn
+  - type: WeldingSparksAnimation # Goobstation
+    startingOffset: 0, 0.5
+  - type: AirlockIllumination # Pirate changes
   placement:
     mode: SnapgridCenter
 
@@ -289,7 +292,7 @@
 - type: entity
   id: AirlockGlass
   parent: Airlock
-  name: glass airlock
+  name: "скляний шлюз"
   components:
   - type: MeleeSound
     soundGroups:
@@ -300,7 +303,7 @@
   - type: Occluder
     enabled: false
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/glass.rsi
+    sprite: _Pirate/Structures/Doors/Airlocks/Glass/glass.rsi # Pirate changes
   - type: AnimationPlayer
   - type: Fixtures
     fixtures:

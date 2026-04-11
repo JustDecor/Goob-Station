@@ -1,9 +1,11 @@
 - type: entity
   id: MobXenomorphFaceHuggerLamarr
   parent: MobXenomorphFaceHugger
-  name: Lamarr
-  description: A former nightmare candidate, now an exemplary pet.
+  name: "Ламарр"
+  description: "Колишній кандидат у кошмари, тепер зразковий домашній улюбленець."
   components:
+  - type: Sprite
+    sprite: _White/Mobs/Aliens/Xenomorphs/old_facehugger.rsi
   - type: FaceHugger
     knockdownTime: 0
     infectionPrototype: null

@@ -1,0 +1,14 @@
+- type: entity
+  parent: BaseMagazineBoxCaselessRifle
+  id: MagazineBoxCaselessRifleStandard
+  name: "коробка з набоями (9.5мм)"
+  description: "Картонна коробка з безгільзовими набоями 9.5мм. Призначена для зберігання кінетичних боєприпасів загального призначення."
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeCaselessRifleStandard
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]

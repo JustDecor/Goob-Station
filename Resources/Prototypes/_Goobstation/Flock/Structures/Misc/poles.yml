@@ -1,14 +1,26 @@
 - type: entity
   id: BaseFlockPole
   parent: BaseStructure
-  name: fibrous pole
-  description: Huh. Weird.
+  name: "волокнистий стовп"
+  description: "Гм. Дивно."
   components:
   - type: Sprite
     drawdepth: Walls
     sprite: _Goobstation/Flock/Structures/Misc/pole.rsi
     layers:
       - state: pole
+  - type: InteractionOutline
+  - type: Damageable
+    damageModifierSet: RGlass
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
 
 - type: entity
   id: FlockPoleEnd
